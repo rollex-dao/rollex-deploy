@@ -82,7 +82,7 @@ export const getERC20 = async (
   address: tEthereumAddress
 ): Promise<IERC20Detailed> =>
   getContract(
-    "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol:IERC20Detailed",
+    "@pollum-io/lending-core/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol:IERC20Detailed",
     address
   );
 
@@ -160,7 +160,7 @@ export const getIErc20Detailed = async (
   address: tEthereumAddress
 ): Promise<IERC20Detailed> =>
   getContract(
-    "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol:IERC20Detailed",
+    "@pollum-io/lending-core/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol:IERC20Detailed",
     address
   );
 
@@ -306,7 +306,7 @@ export const getPullRewardsStrategy = async (
   getContract(
     "PullRewardsTransferStrategy",
     address ||
-      (await hre.deployments.get(INCENTIVES_PULL_REWARDS_STRATEGY_ID)).address
+    (await hre.deployments.get(INCENTIVES_PULL_REWARDS_STRATEGY_ID)).address
   );
 
 export const getStakedRewardsStrategy = async (
@@ -315,7 +315,7 @@ export const getStakedRewardsStrategy = async (
   getContract(
     "StakedTokenTransferStrategy",
     address ||
-      (await hre.deployments.get(INCENTIVES_STAKED_TOKEN_STRATEGY_ID)).address
+    (await hre.deployments.get(INCENTIVES_STAKED_TOKEN_STRATEGY_ID)).address
   );
 
 export const getStakeAave = async (

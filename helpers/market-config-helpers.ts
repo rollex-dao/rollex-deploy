@@ -12,17 +12,9 @@ import {
   SubTokenOutput,
   AssetType,
 } from "./types";
-import AaveMarket from "../markets/aave";
+import AaveMarket from "../markets/pegasys";
 import EthereumV3Config from "../markets/ethereum";
 import AaveTestMarket from "../markets/test";
-import HarmonyMarket from "../markets/harmony";
-import AvalancheMarket from "../markets/avalanche";
-import FantomMarket from "../markets/fantom";
-import PolygonMarket from "../markets/polygon";
-import OptimisticConfig from "../markets/optimistic";
-import ArbitrumConfig from "../markets/arbitrum";
-import BaseConfig from "../markets/base";
-import { isValidAddress } from "./utilities/utils";
 import { AaveProtocolDataProvider } from "../typechain";
 import {
   ATOKEN_PREFIX,
@@ -34,24 +26,14 @@ import {
   VARIABLE_DEBT_PREFIX,
 } from "./deploy-ids";
 import { ZERO_ADDRESS } from "./constants";
-import { getTestnetReserveAddressFromSymbol, POOL_DATA_PROVIDER } from ".";
+import { getTestnetReserveAddressFromSymbol, isValidAddress, POOL_DATA_PROVIDER } from ".";
 import { ENABLE_REWARDS } from "./env";
 
 declare var hre: HardhatRuntimeEnvironment;
 
 export enum ConfigNames {
   Commons = "Commons",
-  Aave = "Aave",
-  Test = "Test",
-  Harmony = "Harmony",
-  Avalanche = "Avalanche",
-  Fantom = "Fantom",
-  Polygon = "Polygon",
-  Optimistic = "Optimistic",
-  Arbitrum = "Arbitrum",
-  Ethereum = "Ethereum",
-  Base = "Base",
-  baseGoerli = "base-goerli",
+  Aave = "Pegasys",
 }
 
 export const getParamPerNetwork = <T>(
@@ -89,8 +71,7 @@ export const getAddressFromConfig = (
   );
   if (!value || !isValidAddress(value)) {
     throw Error(
-      `[aave-v3-deploy] Input parameter ${
-        key ? `"${key}"` : ""
+      `[aave-v3-deploy] Input parameter ${key ? `"${key}"` : ""
       } is missing or is not an address.`
     );
   }
@@ -101,24 +82,6 @@ export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
   switch (configName) {
     case ConfigNames.Aave:
       return AaveMarket;
-    case ConfigNames.Test:
-      return AaveTestMarket;
-    case ConfigNames.Harmony:
-      return HarmonyMarket;
-    case ConfigNames.Avalanche:
-      return AvalancheMarket;
-    case ConfigNames.Fantom:
-      return FantomMarket;
-    case ConfigNames.Polygon:
-      return PolygonMarket;
-    case ConfigNames.Optimistic:
-      return OptimisticConfig;
-    case ConfigNames.Arbitrum:
-      return ArbitrumConfig;
-    case ConfigNames.Ethereum:
-      return EthereumV3Config;
-    case ConfigNames.Base:
-      return BaseConfig;
     default:
       throw new Error(
         `Unsupported pool configuration: ${configName} is not one of the supported configs ${Object.values(

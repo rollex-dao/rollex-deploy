@@ -4,86 +4,20 @@ import { Deployment } from "hardhat-deploy/types";
 export interface SymbolMap<T> {
   [symbol: string]: T;
 }
-export enum eTenderly {
-  fork = "tenderly-fork",
-}
 
-export type eNetwork =
-  | eEthereumNetwork
-  | ePolygonNetwork
-  | eXDaiNetwork
-  | eAvalancheNetwork
-  | eArbitrumNetwork
-  | eHarmonyNetwork
-  | eFantomNetwork
-  | eOptimismNetwork
-  | eTenderlyNetwork
-  | eBaseNetwork;
 
-type eTenderlyNetwork = "tenderly";
+export type eNetwork = eEthereumNetwork;
 
-export enum eFantomNetwork {
-  main = "fantom",
-  testnet = "fantom-testnet",
-}
 
-export enum eOptimismNetwork {
-  main = "optimism",
-  testnet = "optimism-testnet",
-}
 
 export enum eEthereumNetwork {
-  buidlerevm = "buidlerevm",
-  kovan = "kovan",
-  ropsten = "ropsten",
-  main = "main",
+  rollux = "rollux",
   coverage = "coverage",
-  hardhat = "hardhat",
-  tenderly = "tenderly",
-  rinkeby = "rinkeby",
-  goerli = "goerli",
-  sepolia = "sepolia",
-}
-
-export enum eBaseNetwork {
-  base = "base",
-  baseGoerli = "base-goerli",
-}
-
-export enum ePolygonNetwork {
-  polygon = "polygon",
-  mumbai = "mumbai",
-}
-
-export enum eXDaiNetwork {
-  xdai = "xdai",
-}
-
-export enum eAvalancheNetwork {
-  avalanche = "avalanche",
-  fuji = "fuji",
-}
-
-export enum eArbitrumNetwork {
-  arbitrum = "arbitrum",
-  arbitrumTestnet = "arbitrum-testnet",
-  goerliNitro = "arbitrum-goerli",
-}
-
-export enum eHarmonyNetwork {
-  main = "harmony",
-  testnet = "harmony-testnet",
+  hardhat = "hardhat"
 }
 
 export enum EthereumNetworkNames {
-  kovan = "kovan",
-  ropsten = "ropsten",
-  main = "main",
-  matic = "matic",
-  mumbai = "mumbai",
-  xdai = "xdai",
-  avalanche = "avalanche",
-  fuji = "fuji",
+  rollux = "rollux"
 }
 
 export enum AavePools {
@@ -243,45 +177,11 @@ export interface iAssetCommon<T> {
 export interface iAssetBase<T> {
   WETH: T;
   DAI: T;
-  TUSD: T;
   USDC: T;
   USDT: T;
-  SUSD: T;
-  AAVE: T;
-  BAT: T;
-  MKR: T;
-  LINK: T;
-  KNC: T;
   WBTC: T;
-  MANA: T;
-  ZRX: T;
-  SNX: T;
-  BUSD: T;
-  YFI: T;
-  UNI: T;
-  USD: T;
-  REN: T;
-  ENJ: T;
-  UniDAIWETH: T;
-  UniWBTCWETH: T;
-  UniAAVEWETH: T;
-  UniBATWETH: T;
-  UniDAIUSDC: T;
-  UniCRVWETH: T;
-  UniLINKWETH: T;
-  UniMKRWETH: T;
-  UniRENWETH: T;
-  UniSNXWETH: T;
-  UniUNIWETH: T;
-  UniUSDCWETH: T;
-  UniWBTCUSDC: T;
-  UniYFIWETH: T;
-  BptWBTCWETH: T;
-  BptBALWETH: T;
-  WMATIC: T;
-  STAKE: T;
-  xSUSHI: T;
-  AVAX: T;
+  // USD: T;
+  WSYS: T;
 }
 
 export type iAssetsWithoutETH<T> = Omit<iAssetBase<T>, "ETH">;
@@ -290,7 +190,7 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, "USD">;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  "DAI" | "USDC" | "AAVE" | "LINK" | "WBTC" | "WETH"
+  "DAI" | "USDC" | "WSYS" | "WBTC" | "WETH" | "USDT"
 >;
 
 export type iLpPoolAssets<T> = Pick<
@@ -300,37 +200,7 @@ export type iLpPoolAssets<T> = Pick<
   | "USDT"
   | "WBTC"
   | "WETH"
-  | "UniDAIWETH"
-  | "UniWBTCWETH"
-  | "UniAAVEWETH"
-  | "UniBATWETH"
-  | "UniDAIUSDC"
-  | "UniCRVWETH"
-  | "UniLINKWETH"
-  | "UniMKRWETH"
-  | "UniRENWETH"
-  | "UniSNXWETH"
-  | "UniUNIWETH"
-  | "UniUSDCWETH"
-  | "UniWBTCUSDC"
-  | "UniYFIWETH"
-  | "BptWBTCWETH"
-  | "BptBALWETH"
->;
-
-export type iMaticPoolAssets<T> = Pick<
-  iAssetsWithoutUSD<T>,
-  "DAI" | "USDC" | "USDT" | "WBTC" | "WETH" | "WMATIC" | "AAVE"
->;
-
-export type iXDAIPoolAssets<T> = Pick<
-  iAssetsWithoutUSD<T>,
-  "DAI" | "USDC" | "USDT" | "WBTC" | "WETH" | "STAKE"
->;
-
-export type iAvalanchePoolAssets<T> = Pick<
-  iAssetsWithoutUSD<T>,
-  "WETH" | "DAI" | "USDC" | "USDT" | "AAVE" | "WBTC" | "AVAX"
+  | "WSYS"
 >;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;
@@ -341,51 +211,16 @@ export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 
 export enum TokenContractId {
   DAI = "DAI",
-  AAVE = "AAVE",
-  TUSD = "TUSD",
-  BAT = "BAT",
   WETH = "WETH",
   USDC = "USDC",
   USDT = "USDT",
-  SUSD = "SUSD",
-  ZRX = "ZRX",
-  MKR = "MKR",
   WBTC = "WBTC",
-  LINK = "LINK",
-  KNC = "KNC",
-  MANA = "MANA",
-  REN = "REN",
-  SNX = "SNX",
-  BUSD = "BUSD",
-  USD = "USD",
-  YFI = "YFI",
-  UNI = "UNI",
-  ENJ = "ENJ",
-  UniDAIWETH = "UniDAIWETH",
-  UniWBTCWETH = "UniWBTCWETH",
-  UniAAVEWETH = "UniAAVEWETH",
-  UniBATWETH = "UniBATWETH",
-  UniDAIUSDC = "UniDAIUSDC",
-  UniCRVWETH = "UniCRVWETH",
-  UniLINKWETH = "UniLINKWETH",
-  UniMKRWETH = "UniMKRWETH",
-  UniRENWETH = "UniRENWETH",
-  UniSNXWETH = "UniSNXWETH",
-  UniUNIWETH = "UniUNIWETH",
-  UniUSDCWETH = "UniUSDCWETH",
-  UniWBTCUSDC = "UniWBTCUSDC",
-  UniYFIWETH = "UniYFIWETH",
-  BptWBTCWETH = "BptWBTCWETH",
-  BptBALWETH = "BptBALWETH",
-  WMATIC = "WMATIC",
-  STAKE = "STAKE",
-  xSUSHI = "xSUSHI",
-  AVAX = "AVAX",
+  WSYS = "WSYS",
 }
 
 export interface IReserveParams
   extends IReserveBorrowParams,
-    IReserveCollateralParams {
+  IReserveCollateralParams {
   aTokenImpl: eContractid;
   reserveFactor: string;
   supplyCap: string;
@@ -437,35 +272,12 @@ export type iParamsPerNetworkWithDefault<T> = {
 };
 
 export interface iParamsPerNetworkAll<T>
-  extends iEthereumParamsPerNetwork<T>,
-    iPolygonParamsPerNetwork<T>,
-    iXDaiParamsPerNetwork<T> {}
+  extends iEthereumParamsPerNetwork<T> { }
 
 export interface iEthereumParamsPerNetwork<T> {
-  [eEthereumNetwork.kovan]: T;
-  [eEthereumNetwork.ropsten]: T;
-  [eEthereumNetwork.main]: T;
-  [eEthereumNetwork.tenderly]: T;
+  [eEthereumNetwork.rollux]: T;
 }
 
-export interface iPolygonParamsPerNetwork<T> {
-  [ePolygonNetwork.polygon]: T;
-  [ePolygonNetwork.mumbai]: T;
-}
-
-export interface iXDaiParamsPerNetwork<T> {
-  [eXDaiNetwork.xdai]: T;
-}
-
-export interface iAvalancheParamsPerNetwork<T> {
-  [eAvalancheNetwork.avalanche]: T;
-  [eAvalancheNetwork.fuji]: T;
-}
-
-export interface iArbitrumParamsPerNetwork<T> {
-  [eArbitrumNetwork.arbitrum]: T;
-  [eArbitrumNetwork.arbitrumTestnet]: T;
-}
 
 export interface iParamsPerPool<T> {
   [AavePools.proto]: T;
@@ -540,7 +352,7 @@ export interface IBaseConfiguration {
   RateStrategies: IStrategy;
 }
 
-export interface ICommonConfiguration extends IBaseConfiguration {}
+export interface ICommonConfiguration extends IBaseConfiguration { }
 
 export interface IAaveConfiguration extends ICommonConfiguration {
   //ReservesConfig: iAavePoolAssets<IReserveParams>;

@@ -1,5 +1,4 @@
 import { POOL_ADMIN } from "./../../helpers/constants";
-import { ePolygonNetwork } from "./../../helpers/types";
 import { FORK } from "./../../helpers/hardhat-config-helpers";
 import { waitForTx } from "./../../helpers/utilities/tx";
 import { getOwnableContract } from "./../../helpers/contract-getters";

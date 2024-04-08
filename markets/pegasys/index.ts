@@ -1,3 +1,4 @@
+import { ZERO_ADDRESS } from "../../helpers";
 import {
   IAaveConfiguration,
   eEthereumNetwork,
@@ -19,8 +20,12 @@ import {
 
 export const AaveMarket: IAaveConfiguration = {
   ...CommonsConfig,
-  MarketId: "Testnet Aave Market",
-  ProviderId: 8080,
+  MarketId: "Ethereum Aave Market",
+  ATokenNamePrefix: "Ethereum",
+  StableDebtTokenNamePrefix: "Ethereum",
+  VariableDebtTokenNamePrefix: "Ethereum",
+  SymbolPrefix: "Eth",
+  ProviderId: 30,
   ReservesConfig: {
     DAI: strategyDAI,
     USDC: strategyUSDC,
@@ -38,6 +43,9 @@ export const AaveMarket: IAaveConfiguration = {
       USDT: "0x28c9c7Fb3fE3104d2116Af26cC8eF7905547349c",
       WSYS: "0x4200000000000000000000000000000000000006",
     },
+  },
+  StkAaveProxy: {
+    [eEthereumNetwork.rollux]: ZERO_ADDRESS,
   },
 };
 

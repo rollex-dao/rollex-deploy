@@ -1,6 +1,6 @@
 # Aave V3 Deployments
 
-[![npm (scoped)](https://img.shields.io/npm/v/@aave/deploy-v3)](https://www.npmjs.com/package/@aave/deploy-v3)
+[![npm (scoped)](https://img.shields.io/npm/v/@pollum-io/lending-deploy)](https://www.npmjs.com/package/pollum-io/lending-deploy)
 
 This Node.js repository contains the configuration and deployment scripts for the Aave V3 protocol core and periphery contracts. The repository makes use of `hardhat` and `hardhat-deploy` tools to facilitate the deployment of Aave V3 protocol.
 
@@ -55,12 +55,12 @@ FORK=main MARKET_NAME=Aave npx hardhat deploy
 
 ## How to integrate in your Hardhat project
 
-You can install the `@aave/deploy-v3` package in your Hardhat project to be able to import deployments with `hardhat-deploy` and build on top of Aave in local or testnet network.
+You can install the `pollum-io/lending-deploy` package in your Hardhat project to be able to import deployments with `hardhat-deploy` and build on top of Aave in local or testnet network.
 
 To make it work, you must install the following packages in your project:
 
 ```
-npm i --save-dev @aave/deploy-v3 @aave/core-v3 @aave/periphery-v3
+npm i --save-dev pollum-io/lending-deploy @aave/core-v3 @aave/periphery-v3
 ```
 
 Then, proceed to load the deploy scripts adding the `externals` field in your Hardhat config file at `hardhat.config.js|ts`.
@@ -73,8 +73,8 @@ export default hardhatConfig: HardhatUserConfig = {
    external: {
     contracts: [
       {
-        artifacts: 'node_modules/@aave/deploy-v3/artifacts',
-        deploy: 'node_modules/@aave/deploy-v3/dist/deploy',
+        artifacts: 'node_modules/pollum-io/lending-deploy/artifacts',
+        deploy: 'node_modules/pollum-io/lending-deploy/dist/deploy',
       },
     ],
   },
@@ -84,7 +84,7 @@ export default hardhatConfig: HardhatUserConfig = {
 After all is configured, you can run `npx hardhat deploy` to run the scripts or you can also run it programmatically in your tests using fixtures:
 
 ```
-import {getPoolAddressesProvider} from '@aave/deploy-v3';
+import {getPoolAddressesProvider} from 'pollum-io/lending-deploy';
 
 describe('Tests', () => {
    before(async () => {

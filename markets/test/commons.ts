@@ -3,7 +3,6 @@ import { ZERO_ADDRESS } from "../../helpers/constants";
 import {
   ICommonConfiguration,
   eEthereumNetwork,
-  eArbitrumNetwork,
   TransferStrategy,
   AssetType,
 } from "../../helpers/types";
@@ -28,7 +27,7 @@ export const CommonsConfig: ICommonConfiguration = {
   OracleQuoteUnit: "8",
   WrappedNativeTokenSymbol: "WETH",
   ChainlinkAggregator: {
-    [eEthereumNetwork.main]: {
+    [eEthereumNetwork.rollux]: {
       AAVE: "0x547a514d5e3769680Ce22B2361c10Ea13619e8a9",
       DAI: "0xAed0c38402a5d19df6E4c03F4E2DceD6e29c1ee9",
       LINK: "0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c",
@@ -39,38 +38,13 @@ export const CommonsConfig: ICommonConfiguration = {
       // Note: EUR/USD, not EURS dedicated oracle
       EURS: "0xb49f677943BC038e9857d61E7d053CaA2C1734C1",
     },
-    [eArbitrumNetwork.arbitrumTestnet]: {
-      LINK: "0x52C9Eb2Cc68555357221CAe1e5f2dD956bC194E5",
-      USDC: "0xe020609A0C31f4F96dCBB8DF9882218952dD95c4",
-      DAI: "0xcAE7d280828cf4a0869b26341155E4E9b864C7b2",
-      WBTC: "0x0c9973e7a27d00e656B9f153348dA46CaD70d03d",
-      WETH: "0x5f0423B1a6935dc5596e7A24d98532b67A0AeFd8",
-      USDT: "0xb1Ac85E779d05C2901812d812210F6dE144b2df0",
-      EURS: ZERO_ADDRESS,
-    },
-    [eEthereumNetwork.rinkeby]: {
-      LINK: ZERO_ADDRESS,
-      USDC: "0xa24de01df22b63d23Ebc1882a5E3d4ec0d907bFB",
-      DAI: ZERO_ADDRESS,
-      WBTC: ZERO_ADDRESS,
-      WETH: ZERO_ADDRESS,
-      USDT: ZERO_ADDRESS,
-      EURS: ZERO_ADDRESS,
-    },
+
   },
   ReserveFactorTreasuryAddress: {
-    [eEthereumNetwork.kovan]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
-    [eEthereumNetwork.main]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
-    [eArbitrumNetwork.arbitrumTestnet]:
-      "0xeC67987831C4278160D8e652d3edb0Fc45B3766d",
-    [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
+    [eEthereumNetwork.rollux]: "0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c",
   },
   FallbackOracle: {
-    [eEthereumNetwork.kovan]: "0x50913E8E1c650E790F8a1E741FF9B1B1bB251dfe",
-    [eEthereumNetwork.main]: "0x5b09e578cfeaa23f1b11127a658855434e4f3e09",
-    [eArbitrumNetwork.arbitrum]: ZERO_ADDRESS,
-    [eArbitrumNetwork.arbitrumTestnet]: ZERO_ADDRESS,
-    [eEthereumNetwork.rinkeby]: ZERO_ADDRESS,
+    [eEthereumNetwork.rollux]: "0x5b09e578cfeaa23f1b11127a658855434e4f3e09",
   },
   ReservesConfig: {},
   IncentivesConfig: {
@@ -78,24 +52,6 @@ export const CommonsConfig: ICommonConfiguration = {
       [eEthereumNetwork.hardhat]: true,
     },
     rewards: {
-      [eArbitrumNetwork.arbitrumTestnet]: {
-        CRV: ZERO_ADDRESS,
-        REW: ZERO_ADDRESS,
-        BAL: ZERO_ADDRESS,
-        StkAave: ZERO_ADDRESS,
-      },
-      [eEthereumNetwork.kovan]: {
-        CRV: ZERO_ADDRESS,
-        REW: ZERO_ADDRESS,
-        BAL: ZERO_ADDRESS,
-        StkAave: ZERO_ADDRESS,
-      },
-      [eEthereumNetwork.rinkeby]: {
-        CRV: ZERO_ADDRESS,
-        REW: ZERO_ADDRESS,
-        BAL: ZERO_ADDRESS,
-        StkAave: ZERO_ADDRESS,
-      },
       [eEthereumNetwork.hardhat]: {
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,
@@ -104,24 +60,6 @@ export const CommonsConfig: ICommonConfiguration = {
       },
     },
     rewardsOracle: {
-      [eArbitrumNetwork.arbitrumTestnet]: {
-        CRV: ZERO_ADDRESS,
-        REW: ZERO_ADDRESS,
-        BAL: ZERO_ADDRESS,
-        StkAave: ZERO_ADDRESS,
-      },
-      [eEthereumNetwork.kovan]: {
-        CRV: ZERO_ADDRESS,
-        REW: ZERO_ADDRESS,
-        BAL: ZERO_ADDRESS,
-        StkAave: ZERO_ADDRESS,
-      },
-      [eEthereumNetwork.rinkeby]: {
-        CRV: ZERO_ADDRESS,
-        REW: ZERO_ADDRESS,
-        BAL: ZERO_ADDRESS,
-        StkAave: ZERO_ADDRESS,
-      },
       [eEthereumNetwork.hardhat]: {
         CRV: ZERO_ADDRESS,
         REW: ZERO_ADDRESS,

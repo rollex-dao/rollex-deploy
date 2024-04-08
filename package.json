@@ -1,6 +1,6 @@
 {
-  "name": "@aave/deploy-v3",
-  "version": "1.56.2",
+  "name": "@pollum-io/lending-deploy",
+  "version": "0.0.1",
   "files": [
     "dist",
     "helpers",
@@ -10,18 +10,12 @@
     "node": ">=16.0.0"
   },
   "types": "dist/types/helpers/index.d.ts",
-  "author": "Aave",
-  "contributors": [
-    "David Racero <david.k@aave.com>",
-    "Miguel Martinez <miguel@aave.com>",
-    "Steven Valeri <steven@aave.com>",
-    "Emilio Frangella <emilio@aave.com>"
-  ],
+  "author": "Pegasys",
   "main": "dist/helpers/index.js",
   "devDependencies": {
     "@aave/aave-token": "^1.0.4",
-    "@aave/core-v3": "^1.19.3",
-    "@aave/periphery-v3": "^2.5.2",
+    "@pollum-io/lending-core": "0.0.2",
+    "@pollum-io/lending-periphery": "0.0.3",
     "@aave/safety-module": "^1.0.3",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
@@ -66,8 +60,6 @@
     "deploy:market:eth:empty:fork": "FORK=main MARKET_NAME=Ethereum npm run deploy"
   },
   "peerDependencies": {
-    "@aave/core-v3": "x || >=1.0.0-beta || >=3.0.0-beta",
-    "@aave/periphery-v3": "x || >=1.0.0-beta || >=3.0.0-beta",
     "hardhat": "^2.6.1"
   },
   "publishConfig": {
@@ -75,7 +67,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/aave/aave-v3-deploy"
+    "url": "git://github.com/pegasys-fi/lending-deploy"
   },
   "dependencies": {
     "@openzeppelin/defender-relay-client": "^1.54.1"

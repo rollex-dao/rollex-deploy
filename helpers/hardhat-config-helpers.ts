@@ -5,22 +5,12 @@ import {
   iParamsPerNetwork,
   eEthereumNetwork,
   eNetwork,
-  ePolygonNetwork,
-  eArbitrumNetwork,
-  eHarmonyNetwork,
-  eAvalancheNetwork,
-  eFantomNetwork,
-  eOptimismNetwork,
-  eBaseNetwork,
 } from "./types";
 
 require("dotenv").config();
 
 export const DEFAULT_BLOCK_GAS_LIMIT = 12450000;
 export const DEFAULT_GAS_PRICE = 8000000000;
-export const INFURA_KEY = process.env.INFURA_KEY || "";
-export const ALCHEMY_KEY = process.env.ALCHEMY_KEY || "";
-export const TENDERLY_FORK_ID = process.env.TENDERLY_FORK_ID || "";
 export const FORK = (process.env.FORK || "") as eNetwork;
 export const FORK_BLOCK_NUMBER = process.env.FORK_BLOCK_NUMBER
   ? parseInt(process.env.FORK_BLOCK_NUMBER)
@@ -28,92 +18,21 @@ export const FORK_BLOCK_NUMBER = process.env.FORK_BLOCK_NUMBER
 const MNEMONIC_PATH = "m/44'/60'/0'/0";
 const MNEMONIC = process.env.MNEMONIC || "";
 
-export const getAlchemyKey = (net: eNetwork) => {
-  switch (net) {
-    case eEthereumNetwork.kovan:
-      return process.env.KOVAN_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eEthereumNetwork.main:
-      return process.env.MAIN_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eOptimismNetwork.main:
-      return process.env.OPTIMISM_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eOptimismNetwork.testnet:
-      return process.env.KOVAN_OPTIMISM_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eEthereumNetwork.rinkeby:
-      return process.env.RINKEBY_ALCHEMY_KEY || ALCHEMY_KEY;
-    case ePolygonNetwork.mumbai:
-      return process.env.POLYGON_MUMBAI_ALCHEMY_KEY || ALCHEMY_KEY;
-    case ePolygonNetwork.polygon:
-      return process.env.POLYGON_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eEthereumNetwork.goerli:
-      return process.env.GOERLI_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eEthereumNetwork.sepolia:
-      return process.env.SEPOLIA_ALCHEMY_KEY || ALCHEMY_KEY;
-    case eBaseNetwork.base:
-      return process.env.BASE_ALCHEMY_KEY || ALCHEMY_KEY;
-    default:
-      return ALCHEMY_KEY;
-  }
-};
+
 
 export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
-  [eEthereumNetwork.kovan]: `https://eth-kovan.alchemyapi.io/v2/${getAlchemyKey(
-    eEthereumNetwork.kovan
-  )}`,
-  [eEthereumNetwork.main]: `https://eth-mainnet.alchemyapi.io/v2/${getAlchemyKey(
-    eEthereumNetwork.main
-  )}`,
+  [eEthereumNetwork.rollux]: "https://rpc.rollux.com",
+
   [eEthereumNetwork.coverage]: "http://localhost:8555",
   [eEthereumNetwork.hardhat]: "http://localhost:8545",
-  [ePolygonNetwork.mumbai]: `https://polygon-mumbai.g.alchemy.com/v2/${getAlchemyKey(
-    ePolygonNetwork.mumbai
-  )}`,
-  [ePolygonNetwork.polygon]: `https://polygon-mainnet.g.alchemy.com/v2/${getAlchemyKey(
-    ePolygonNetwork.polygon
-  )}`,
-  [eArbitrumNetwork.arbitrum]: `https://arb1.arbitrum.io/rpc`,
-  [eArbitrumNetwork.arbitrumTestnet]: `https://rinkeby.arbitrum.io/rpc`,
-  [eEthereumNetwork.rinkeby]: `https://eth-rinkeby.alchemyapi.io/v2/${getAlchemyKey(
-    eEthereumNetwork.rinkeby
-  )}`,
-  [eEthereumNetwork.ropsten]: `https://eth-ropsten.alchemyapi.io/v2/${getAlchemyKey(
-    eEthereumNetwork.ropsten
-  )}`,
-  [eHarmonyNetwork.main]: `https://a.api.s0.t.hmny.io/`,
-  [eHarmonyNetwork.testnet]: `https://api.s0.b.hmny.io`,
-  [eAvalancheNetwork.avalanche]: "https://api.avax.network/ext/bc/C/rpc",
-  [eAvalancheNetwork.fuji]: "https://api.avax-test.network/ext/bc/C/rpc",
-  [eFantomNetwork.main]: "https://rpc.ftm.tools/",
-  [eFantomNetwork.testnet]: "https://rpc.testnet.fantom.network/",
-  [eOptimismNetwork.testnet]: `https://opt-goerli.g.alchemy.com/v2/demo`,
-  [eOptimismNetwork.main]: `https://mainnet.optimism.io`,
-  tenderly: `https://rpc.tenderly.co/fork/${TENDERLY_FORK_ID}`,
-  [eEthereumNetwork.goerli]: `https://eth-goerli.alchemyapi.io/v2/${getAlchemyKey(
-    eEthereumNetwork.goerli
-  )}`,
-  [eEthereumNetwork.sepolia]: `https://eth-sepolia.g.alchemy.com/v2/${getAlchemyKey(
-    eEthereumNetwork.sepolia
-  )}`,
-  [eArbitrumNetwork.goerliNitro]: `https://goerli-rollup.arbitrum.io/rpc`,
-  [eBaseNetwork.baseGoerli]: `https://goerli.base.org`,
-  [eBaseNetwork.base]: `https://base-mainnet.g.alchemy.com/v2/${getAlchemyKey(
-    eBaseNetwork.base
-  )}`,
 };
 
 export const LIVE_NETWORKS: iParamsPerNetwork<boolean> = {
-  [eEthereumNetwork.main]: true,
-  [ePolygonNetwork.polygon]: true,
-  [eArbitrumNetwork.arbitrum]: true,
-  [eHarmonyNetwork.main]: true,
-  [eAvalancheNetwork.avalanche]: true,
-  [eFantomNetwork.main]: true,
-  [eOptimismNetwork.main]: true,
-  [eBaseNetwork.base]: true,
+  [eEthereumNetwork.rollux]: true,
 };
 
 const GAS_PRICE_PER_NET: iParamsPerNetwork<string | number> = {
-  [eArbitrumNetwork.goerliNitro]: 100000001,
-  [eBaseNetwork.baseGoerli]: 8000000000,
+
 };
 
 export const buildForkConfig = ():
@@ -161,12 +80,6 @@ export const getCommonNetworkConfig = (
 });
 
 const MNEMONICS: iParamsPerNetwork<string> = {
-  [eAvalancheNetwork.fuji]: process.env.FUJI_MNEMONIC,
-  [eFantomNetwork.testnet]: process.env.FANTOM_MNEMONIC,
-  [eHarmonyNetwork.testnet]: process.env.HARMONY_MNEMONIC,
-  [eArbitrumNetwork.arbitrumTestnet]: process.env.ARBITRUM_MNEMONIC,
-  [ePolygonNetwork.mumbai]: process.env.POLYGON_MUMBAI_MNEMONIC,
-  [ePolygonNetwork.polygon]: process.env.POLYGON_MNEMONIC,
 };
 
 export const hardhatNetworkSettings = {
@@ -183,11 +96,11 @@ export const hardhatNetworkSettings = {
   accounts:
     FORK && !!MNEMONIC
       ? {
-          mnemonic: MNEMONIC,
-          path: MNEMONIC_PATH,
-          initialIndex: 0,
-          count: 10,
-        }
+        mnemonic: MNEMONIC,
+        path: MNEMONIC_PATH,
+        initialIndex: 0,
+        count: 10,
+      }
       : undefined,
 };
 
