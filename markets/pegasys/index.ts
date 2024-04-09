@@ -20,11 +20,11 @@ import {
 
 export const AaveMarket: IAaveConfiguration = {
   ...CommonsConfig,
-  MarketId: "Ethereum Aave Market",
-  ATokenNamePrefix: "Ethereum",
-  StableDebtTokenNamePrefix: "Ethereum",
-  VariableDebtTokenNamePrefix: "Ethereum",
-  SymbolPrefix: "Eth",
+  MarketId: "Rollux Pegasys Market",
+  ATokenNamePrefix: "Rollux",
+  StableDebtTokenNamePrefix: "Rollux",
+  VariableDebtTokenNamePrefix: "Rollux",
+  SymbolPrefix: "Rlx",
   ProviderId: 30,
   ReservesConfig: {
     DAI: strategyDAI,
@@ -34,6 +34,7 @@ export const AaveMarket: IAaveConfiguration = {
     USDT: strategyUSDT,
     WSYS: strategyWSYS,
   },
+  TestnetMarket: true,
   ReserveAssets: {
     [eEthereumNetwork.rollux]: {
       DAI: "0x5B0aC6194499621630ddebb30c4aBE37037b30Ec",
@@ -45,7 +46,7 @@ export const AaveMarket: IAaveConfiguration = {
     },
   },
   StkAaveProxy: {
-    [eEthereumNetwork.rollux]: ZERO_ADDRESS,
+    [eEthereumNetwork.rollux]: '0x29991890041C24E9793E276747Ac5640C82d72Fc',
   },
 };
 

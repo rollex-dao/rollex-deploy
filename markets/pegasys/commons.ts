@@ -27,16 +27,16 @@ export const CommonsConfig: ICommonConfiguration = {
   WrappedNativeTokenSymbol: "WSYS",
   ChainlinkAggregator: {
     [eEthereumNetwork.rollux]: {
-      WSYS: ZERO_ADDRESS,
-      USDC: ZERO_ADDRESS,
       DAI: ZERO_ADDRESS,
+      USDC: ZERO_ADDRESS,
       WBTC: ZERO_ADDRESS,
       WETH: ZERO_ADDRESS,
       USDT: ZERO_ADDRESS,
+      WSYS: ZERO_ADDRESS,
     },
   },
   ReserveFactorTreasuryAddress: {
-    [eEthereumNetwork.rollux]: ZERO_ADDRESS,
+    // [eEthereumNetwork.rollux]: ZERO_ADDRESS,
   },
   FallbackOracle: {
     [eEthereumNetwork.rollux]: ZERO_ADDRESS,
@@ -44,18 +44,18 @@ export const CommonsConfig: ICommonConfiguration = {
   ReservesConfig: {},
   IncentivesConfig: {
     enabled: {
-      [eEthereumNetwork.rollux]: true,
+      // [eEthereumNetwork.rollux]: true,
     },
     rewards: {
 
-      [eEthereumNetwork.rollux]: {
-        StkAave: ZERO_ADDRESS,
-      }
+      // [eEthereumNetwork.rollux]: {
+      //   StkAave: ZERO_ADDRESS,
+      // }
     },
     rewardsOracle: {
-      [eEthereumNetwork.rollux]: {
-        StkAave: ZERO_ADDRESS,
-      },
+      // [eEthereumNetwork.rollux]: {
+      //   StkAave: ZERO_ADDRESS,
+      // },
 
     },
     incentivesInput: {
@@ -94,17 +94,17 @@ export const CommonsConfig: ICommonConfiguration = {
     },
   },
   EModes: {
-    StableEMode: {
-      id: "1",
-      ltv: "9700",
-      liquidationThreshold: "9750",
-      liquidationBonus: "10100",
-      label: "Stablecoins",
-      assets: ["USDC", "USDT", "DAI", "EURS"],
-    },
+    // StableEMode: {
+    //   id: "1",
+    //   ltv: "9700",
+    //   liquidationThreshold: "9750",
+    //   liquidationBonus: "10100",
+    //   label: "Stablecoins",
+    //   assets: ["USDC", "USDT", "DAI"],
+    // },
   },
   L2PoolEnabled: {
-    [eEthereumNetwork.rollux]: true,
+    // [eEthereumNetwork.rollux]: true,
   },
   ParaswapRegistry: {
     // [eEthereumNetwork.rollux]: ZERO_ADDRESS

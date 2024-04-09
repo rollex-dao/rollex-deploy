@@ -13,7 +13,6 @@ import {
   AssetType,
 } from "./types";
 import AaveMarket from "../markets/pegasys";
-import EthereumV3Config from "../markets/ethereum";
 import AaveTestMarket from "../markets/test";
 import { AaveProtocolDataProvider } from "../typechain";
 import {
@@ -34,6 +33,7 @@ declare var hre: HardhatRuntimeEnvironment;
 export enum ConfigNames {
   Commons = "Commons",
   Aave = "Pegasys",
+  Test = "Test"
 }
 
 export const getParamPerNetwork = <T>(
@@ -82,6 +82,8 @@ export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
   switch (configName) {
     case ConfigNames.Aave:
       return AaveMarket;
+    case ConfigNames.Test:
+      return AaveTestMarket;
     default:
       throw new Error(
         `Unsupported pool configuration: ${configName} is not one of the supported configs ${Object.values(
