@@ -140,7 +140,9 @@ export default {
     ? DETERMINISTIC_FACTORIES
     : undefined,
   etherscan: {
-    apiKey: ETHERSCAN_KEY,
+    apiKey: {
+      rollux: "abc"
+    },
     customChains: [
       {
         network: eEthereumNetwork.rollux,

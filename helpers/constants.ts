@@ -36,22 +36,22 @@ export const ZERO_BYTES_32 =
   "0x0000000000000000000000000000000000000000000000000000000000000000";
 
 export const MOCK_CHAINLINK_AGGREGATORS_PRICES: { [key: string]: string } = {
-  WETH: parseUnits("4000", 8).toString(),
+  ETH: parseUnits("4000", 8).toString(),
   SYS: parseUnits("0.25", 8).toString(),
   DAI: parseUnits("1", 8).toString(),
   USDC: parseUnits("1", 8).toString(),
   USDT: parseUnits("1", 8).toString(),
-  WBTC: parseUnits("72000", 8).toString(),
+  BTC: parseUnits("72000", 8).toString(),
   USD: parseUnits("1", 8).toString(),
   WSYS: parseUnits("0.25", 8).toString(),
 };
 
 export const chainlinkAggregatorProxy: Record<string, string> = {
-  rollux: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+  rollux: "0x2B25C28A7c73CAE5353Ee7Bf724D32AC4134c2f1",
 };
 
 export const chainlinkEthUsdAggregatorProxy: Record<string, string> = {
-  rollux: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+  rollux: "0x2B25C28A7c73CAE5353Ee7Bf724D32AC4134c2f1",
 };
 
 export const ETHEREUM_SHORT_EXECUTOR =

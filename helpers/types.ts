@@ -175,11 +175,11 @@ export interface iAssetCommon<T> {
   [key: string]: T;
 }
 export interface iAssetBase<T> {
-  WETH: T;
+  ETH: T;
   DAI: T;
   USDC: T;
   USDT: T;
-  WBTC: T;
+  BTC: T;
   // USD: T;
   WSYS: T;
 }
@@ -190,7 +190,7 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, "USD">;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  "DAI" | "USDC" | "WSYS" | "WBTC" | "WETH" | "USDT"
+  "DAI" | "USDC" | "WSYS" | "BTC" | "ETH" | "USDT"
 >;
 
 export type iLpPoolAssets<T> = Pick<
@@ -198,8 +198,8 @@ export type iLpPoolAssets<T> = Pick<
   | "DAI"
   | "USDC"
   | "USDT"
-  | "WBTC"
-  | "WETH"
+  | "BTC"
+  | "ETH"
   | "WSYS"
 >;
 
@@ -211,10 +211,10 @@ export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 
 export enum TokenContractId {
   DAI = "DAI",
-  WETH = "WETH",
+  ETH = "ETH",
   USDC = "USDC",
   USDT = "USDT",
-  WBTC = "WBTC",
+  BTC = "BTC",
   WSYS = "WSYS",
 }
 
