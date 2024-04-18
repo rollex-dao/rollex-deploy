@@ -45,7 +45,7 @@ export const AaveMarket: IAaveConfiguration = {
     },
   },
   StkAaveProxy: {
-    [eEthereumNetwork.rollux]: '0x29991890041C24E9793E276747Ac5640C82d72Fc',
+    [eEthereumNetwork.rollux]: '0x7170FeE145954863ca1c456BE1b6FB1e869e3B77',
   },
 };
 
