@@ -47,11 +47,11 @@ export const MOCK_CHAINLINK_AGGREGATORS_PRICES: { [key: string]: string } = {
 };
 
 export const chainlinkAggregatorProxy: Record<string, string> = {
-  rollux: "0x2B25C28A7c73CAE5353Ee7Bf724D32AC4134c2f1",
+  rollux: "0x93fFce52f5776ad8465669b5C52548b92ed6678F",
 };
 
 export const chainlinkEthUsdAggregatorProxy: Record<string, string> = {
-  rollux: "0x2B25C28A7c73CAE5353Ee7Bf724D32AC4134c2f1",
+  rollux: "0x93fFce52f5776ad8465669b5C52548b92ed6678F",
 };
 
 export const ETHEREUM_SHORT_EXECUTOR =
