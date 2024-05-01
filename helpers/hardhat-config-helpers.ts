@@ -29,6 +29,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
 
 export const LIVE_NETWORKS: iParamsPerNetwork<boolean> = {
   [eEthereumNetwork.rollux]: true,
+  [eEthereumNetwork.hardhat]: false,
 };
 
 const GAS_PRICE_PER_NET: iParamsPerNetwork<string | number> = {
