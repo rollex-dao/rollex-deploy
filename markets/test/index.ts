@@ -1,4 +1,10 @@
 import {
+  rateStrategyStableOne,
+  rateStrategyStableTwo,
+  rateStrategyVolatileOne,
+} from "./rateStrategies";
+import { ZERO_ADDRESS } from "../../helpers";
+import {
   IAaveConfiguration,
   eEthereumNetwork,
 } from "../../helpers/types";
@@ -7,10 +13,9 @@ import { CommonsConfig } from "./commons";
 import {
   strategyDAI,
   strategyUSDC,
-  strategyBTC,
-  strategyETH,
-  strategyUSDT,
-  strategyWSYS,
+  strategyAAVE,
+  strategyLINK,
+  strategyWETH,
 } from "./reservesConfigs";
 
 // ----------------
@@ -22,21 +27,26 @@ export const AaveMarket: IAaveConfiguration = {
   MarketId: "Testnet Aave Market",
   ProviderId: 8080,
   ReservesConfig: {
+    AAVE: strategyAAVE,
     DAI: strategyDAI,
     USDC: strategyUSDC,
-    BTC: strategyBTC,
-    ETH: strategyETH,
-    USDT: strategyUSDT,
-    WSYS: strategyWSYS,
+    WETH: strategyWETH,
+    LINK: strategyLINK,
   },
   ReserveAssets: {
+    [eEthereumNetwork.tanenbaum]: {
+      AAVE: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      DAI: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      USDC: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      WETH: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      LINK: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+    },
     [eEthereumNetwork.rollux]: {
-      DAI: "0x5B0aC6194499621630ddebb30c4aBE37037b30Ec",
-      USDC: "0x368433CaC2A0B8D76E64681a9835502a1f2A8A30",
-      BTC: "0x2A4DC2e946b92AB4a1f7D62844EB237788F9056c",
-      ETH: "0xaA1c53AFd099E415208F47FCFA2C880f659E6904",
-      USDT: "0x28c9c7Fb3fE3104d2116Af26cC8eF7905547349c",
-      WSYS: "0x4200000000000000000000000000000000000006",
+      AAVE: ZERO_ADDRESS,
+      DAI: ZERO_ADDRESS,
+      USDC: ZERO_ADDRESS,
+      WETH: ZERO_ADDRESS,
+      LINK: ZERO_ADDRESS,
     },
   },
 };

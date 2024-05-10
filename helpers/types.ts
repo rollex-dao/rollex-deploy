@@ -11,6 +11,7 @@ export type eNetwork = eEthereumNetwork;
 
 
 export enum eEthereumNetwork {
+  tanenbaum = "tanenbaum",
   rollux = "rollux",
   coverage = "coverage",
   hardhat = "hardhat"

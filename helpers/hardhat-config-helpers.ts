@@ -21,6 +21,7 @@ const MNEMONIC = process.env.MNEMONIC || "";
 
 
 export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
+  [eEthereumNetwork.tanenbaum]: "https://rpc-tanenbaum.rollux.com",
   [eEthereumNetwork.rollux]: "https://rpc.rollux.com",
 
   [eEthereumNetwork.coverage]: "http://localhost:8555",
