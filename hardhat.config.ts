@@ -59,6 +59,7 @@ export default {
       url: "http://127.0.0.1:8545",
       ...hardhatNetworkSettings,
     },
+    tanenbaum: getCommonNetworkConfig(eEthereumNetwork.tanenbaum, 57000),
     rollux: getCommonNetworkConfig(eEthereumNetwork.rollux, 570),
   },
   namedAccounts: {

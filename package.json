@@ -1,6 +1,6 @@
 {
   "name": "@pollum-io/lending-deploy",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "files": [
     "dist",
     "helpers",
@@ -14,7 +14,7 @@
   "main": "dist/helpers/index.js",
   "devDependencies": {
     "@aave/aave-token": "^1.0.4",
-    "@pollum-io/lending-core": "0.0.2",
+    "@pollum-io/lending-core": "0.0.3",
     "@pollum-io/lending-periphery": "0.0.3",
     "@aave/safety-module": "^1.0.3",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",

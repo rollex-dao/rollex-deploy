@@ -25,26 +25,20 @@ export const CommonsConfig: ICommonConfiguration = {
   OracleQuoteCurrencyAddress: ZERO_ADDRESS,
   OracleQuoteCurrency: "USD",
   OracleQuoteUnit: "8",
-  WrappedNativeTokenSymbol: "WSYS",
+  WrappedNativeTokenSymbol: "WETH",
   ChainlinkAggregator: {
-    [eEthereumNetwork.rollux]: {
-      DAI: '0x18ABcCA40dd4e234bDA4fa230673C2A0A3be4372',
-      USDC: '0x4202D0EfeA0AEC3d9582d499e340dF73cF428eB2',
-      BTC: '0x6386dDfaF09f0e0517D9861BA5680CB6a0c18Dc3',
-      ETH: '0x5668E903ae1bED9b719CDf259C905103d60EAEaA',
-      USDT: '0x09C3FEBc4b3e6bF01472aF47bc87a2c3301789c5',
-      WSYS: '0x93fFce52f5776ad8465669b5C52548b92ed6678F',
-    },
+    
   },
   ReserveFactorTreasuryAddress: {
+   
   },
   FallbackOracle: {
-    [eEthereumNetwork.rollux]: ZERO_ADDRESS,
+    
   },
   ReservesConfig: {},
   IncentivesConfig: {
     enabled: {
-      [eEthereumNetwork.hardhat]: false,
+      [eEthereumNetwork.hardhat]: true,
     },
     rewards: {
       [eEthereumNetwork.hardhat]: {
@@ -63,9 +57,39 @@ export const CommonsConfig: ICommonConfiguration = {
       },
     },
     incentivesInput: {
+      [eEthereumNetwork.hardhat]: [
+        {
+          emissionPerSecond: "34629756533",
+          duration: 7890000,
+          asset: "DAI",
+          assetType: AssetType.AToken,
+          reward: "CRV",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+        {
+          emissionPerSecond: "300801036720127500",
+          duration: 7890000,
+          asset: "USDC",
+          assetType: AssetType.AToken,
+          reward: "REW",
+          rewardOracle: "0",
+          transferStrategy: TransferStrategy.PullRewardsStrategy,
+          transferStrategyParams: "0",
+        },
+      ],
     },
   },
   EModes: {
+    StableEMode: {
+      id: "1",
+      ltv: "9800",
+      liquidationThreshold: "9850",
+      liquidationBonus: "10100",
+      label: "Stable-EMode",
+      assets: ["USDC", "DAI"],
+    },
   },
   FlashLoanPremiums: {
     total: 0.0009e4,

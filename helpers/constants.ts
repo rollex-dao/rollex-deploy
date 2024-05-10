@@ -36,14 +36,21 @@ export const ZERO_BYTES_32 =
   "0x0000000000000000000000000000000000000000000000000000000000000000";
 
 export const MOCK_CHAINLINK_AGGREGATORS_PRICES: { [key: string]: string } = {
+  AAVE: parseUnits("300", 8).toString(),
+  WETH: parseUnits("4000", 8).toString(),
   ETH: parseUnits("4000", 8).toString(),
-  SYS: parseUnits("0.25", 8).toString(),
   DAI: parseUnits("1", 8).toString(),
   USDC: parseUnits("1", 8).toString(),
   USDT: parseUnits("1", 8).toString(),
-  BTC: parseUnits("72000", 8).toString(),
+  WBTC: parseUnits("60000", 8).toString(),
+  LINK: parseUnits("30", 8).toString(),
+  CRV: parseUnits("6", 8).toString(),
+  BAL: parseUnits("19.70", 8).toString(),
+  REW: parseUnits("1", 8).toString(),
   USD: parseUnits("1", 8).toString(),
+  BTC: parseUnits("72000", 8).toString(),
   WSYS: parseUnits("0.25", 8).toString(),
+  SYS: parseUnits("0.25", 8).toString(),
 };
 
 export const chainlinkAggregatorProxy: Record<string, string> = {
