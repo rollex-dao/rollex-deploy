@@ -1,6 +1,6 @@
 {
   "name": "@pollum-io/lending-deploy",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "files": [
     "dist",
     "helpers",
