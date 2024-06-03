@@ -16,6 +16,7 @@ export * from "../markets/pegasys/rateStrategies";
 export * from "../markets/pegasys/reservesConfigs";
 export * from "../tasks/market-registry/market-registry-add";
 export * from "../tasks/misc/deploy-ui-helpers";
+export * from "../tasks/misc/disable-faucet-native-testnets";
 export * from "../tasks/misc/deploy-UiIncentiveDataProvider";
 export * from "../tasks/misc/deploy-UiPoolDataProvider";
 export * from "../tasks/misc/faucet";
