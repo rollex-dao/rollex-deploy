@@ -132,9 +132,9 @@ export default {
       "@pollum-io/lending-periphery/contracts/adapters/paraswap/ParaSwapLiquiditySwapAdapter.sol",
       "@pollum-io/lending-periphery/contracts/adapters/paraswap/ParaSwapRepayAdapter.sol",
       "@pollum-io/lending-periphery/contracts/adapters/paraswap/ParaSwapWithdrawSwapAdapter.sol",
-      "@pollum-io/pegasys-stake/contracts/stake/StakedPSYS.sol",
-      "@pollum-io/pegasys-stake/contracts/stake/StakedPSYSV3.sol",
-      "@pollum-io/pegasys-stake/contracts/proposals/extend-stkaave-distribution/StakedTokenV2Rev3.sol",
+      "@pollum-io/rex-stake/contracts/stake/StakedREX.sol",
+      "@pollum-io/rex-stake/contracts/stake/StakedREXV3.sol",
+      "@pollum-io/rex-stake/contracts/proposals/extend-stkaave-distribution/StakedTokenV2Rev3.sol",
     ],
   },
   deterministicDeployment: DETERMINISTIC_DEPLOYMENT

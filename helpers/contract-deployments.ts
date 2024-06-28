@@ -1,7 +1,7 @@
 import { EmissionManager } from "./../typechain";
 import { MockL2Pool } from "./../typechain";
 import { EMPTY_STORAGE_SLOT, ZERO_ADDRESS } from "./constants";
-import { StakedPSYS } from "./../typechain";
+import { StakedREX } from "./../typechain";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { getPoolLibraries } from "./contract-getters";
 import { tEthereumAddress, tStringTokenSmallUnits } from "./types";
@@ -30,7 +30,7 @@ import {
   STAKE_AAVE_IMPL_V2,
   STAKE_AAVE_IMPL_V3,
 } from "./deploy-ids";
-import { StakedPSYSV3 } from "../typechain";
+import { StakedREXV3 } from "../typechain";
 import { StakedTokenV3Rev3 } from "../typechain";
 import {
   MockAggregator,
@@ -397,7 +397,7 @@ export const deployWrappedTokenGateway = async (
     wrappedToken,
   ]);
 
-export const deployStakedPSYSV3 = async ([
+export const deployStakedREXV3 = async ([
   stakedToken,
   rewardsToken,
   cooldownSeconds,
@@ -435,7 +435,7 @@ export const deployStakedPSYSV3 = async ([
   );
 };
 
-export const deployStakedPSYSV2 = async ([
+export const deployStakedREXV2 = async ([
   stakedToken,
   rewardsToken,
   cooldownSeconds,
@@ -451,7 +451,7 @@ export const deployStakedPSYSV2 = async ([
   tEthereumAddress,
   tEthereumAddress,
   string
-]): Promise<StakedPSYSV3> => {
+]): Promise<StakedREXV3> => {
   const { deployer } = await hre.getNamedAccounts();
   const args: string[] = [
     stakedToken,
@@ -464,15 +464,15 @@ export const deployStakedPSYSV2 = async ([
     ZERO_ADDRESS, // gov address
   ];
 
-  return deployContract<StakedPSYSV3>(
-    "StakedPSYSV3",
+  return deployContract<StakedREXV3>(
+    "StakedREXV3",
     args,
     undefined,
     STAKE_AAVE_IMPL_V2
   );
 };
 
-export const deployStakedPSYSV1 = async ([
+export const deployStakedREXV1 = async ([
   stakedToken,
   rewardsToken,
   cooldownSeconds,
@@ -488,7 +488,7 @@ export const deployStakedPSYSV1 = async ([
   tEthereumAddress,
   tEthereumAddress,
   string
-]): Promise<StakedPSYS> => {
+]): Promise<StakedREX> => {
   const { deployer } = await hre.getNamedAccounts();
   const args: string[] = [
     stakedToken,
@@ -500,8 +500,8 @@ export const deployStakedPSYSV1 = async ([
     distributionDuration,
   ];
 
-  return deployContract<StakedPSYS>(
-    "StakedPSYS",
+  return deployContract<StakedREX>(
+    "StakedREX",
     args,
     undefined,
     STAKE_AAVE_IMPL_V1
@@ -522,9 +522,9 @@ export const setupStkAave = async (
 ) => {
   const { incentivesProxyAdmin } = await hre.getNamedAccounts();
   const proxyAdmin = await hre.ethers.getSigner(incentivesProxyAdmin);
-  const implRev1 = await deployStakedPSYSV1(args);
-  const implRev2 = await deployStakedPSYSV2(args);
-  const implRev3 = await deployStakedPSYSV3(args);
+  const implRev1 = await deployStakedREXV1(args);
+  const implRev2 = await deployStakedREXV2(args);
+  const implRev3 = await deployStakedREXV3(args);
 
   const proxyAdminSlot = await hre.ethers.provider.getStorageAt(
     proxy.address,
